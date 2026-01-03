@@ -15,24 +15,42 @@
             "rust"
             "zig"
             "python"
+            "assembly"
             "c"
             "cpp"
+            "css"
           ]);
       };
     };
   };
 
   config = {
-    vim = {
+    vim = let
+      finalLanguages = (
+        (builtins.filter (language: (language == "c") || (language == "cpp")) config.nixnvim.languages)
+        ++ (
+          if (builtins.length (builtins.filter (language: (language != "c") && (language != "cpp")) config.nixnvim.languages) != 0)
+          then ["clang"]
+          else []
+        )
+      );
+    in {
       languages = lib.mkMerge [
         (lib.genAttrs
-          config.nixnvim.languages
+          finalLanguages
           (
             name: {
               enable = true;
               lsp.enable = true;
-              format.enable = true;
               treesitter.enable = true;
+            }
+          ))
+
+        (lib.genAttrs
+          ["nix" "rust" "python" "css"]
+          (
+            name: {
+              format.enable = true;
             }
           ))
 
