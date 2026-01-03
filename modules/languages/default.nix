@@ -14,6 +14,7 @@
             "haskell"
             "rust"
             "zig"
+            "lua"
             "python"
             "assembly"
             "c"
@@ -47,7 +48,7 @@
           ))
 
         (lib.genAttrs
-          ["nix" "rust" "python" "css"]
+          ["nix" "rust" "python" "css" "lua"]
           (
             name: {
               format.enable = true;
