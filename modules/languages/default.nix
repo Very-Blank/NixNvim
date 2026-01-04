@@ -28,9 +28,9 @@
   config = {
     vim = let
       finalLanguages = (
-        (builtins.filter (language: (language == "c") || (language == "cpp")) config.nixnvim.languages)
+        (builtins.filter (language: (language == "c") && (language == "cpp")) config.nixnvim.languages)
         ++ (
-          if (builtins.length (builtins.filter (language: (language != "c") && (language != "cpp")) config.nixnvim.languages) != 0)
+          if (builtins.length (builtins.filter (language: (language != "c") || (language != "cpp")) config.nixnvim.languages) != 0)
           then ["clang"]
           else []
         )
