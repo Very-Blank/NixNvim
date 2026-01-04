@@ -1,7 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nvf.url = "github:notashelf/nvf";
+    # FIXME: https://github.com/NotAShelf/nvf/issues/1312
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
+
+    nvf.url = "github:NotAShelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
