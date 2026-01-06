@@ -17,8 +17,7 @@
             "lua"
             "python"
             "assembly"
-            "c"
-            "cpp"
+            "clang"
             "css"
           ]);
       };
@@ -26,19 +25,10 @@
   };
 
   config = {
-    vim = let
-      finalLanguages = (
-        (builtins.filter (language: (language == "c") && (language == "cpp")) config.nixnvim.languages)
-        ++ (
-          if (builtins.length (builtins.filter (language: (language != "c") || (language != "cpp")) config.nixnvim.languages) != 0)
-          then ["clang"]
-          else []
-        )
-      );
-    in {
+    vim = {
       languages = lib.mkMerge [
         (lib.genAttrs
-          finalLanguages
+          languages 
           (
             name: {
               enable = true;
