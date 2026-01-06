@@ -24,11 +24,11 @@
     };
   };
 
-  config = {
+  config = let cfg = config.nixnvim; in {
     vim = {
       languages = lib.mkMerge [
         (lib.genAttrs
-          languages 
+          cfg.languages 
           (
             name: {
               enable = true;
