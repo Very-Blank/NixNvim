@@ -64,7 +64,17 @@
       telescope.enable = true;
       formatter.conform-nvim.enable = true;
 
-      autocomplete.blink-cmp.enable = true;
+      autocomplete.blink-cmp = {
+        enable = true;
+        setupOpts.cmdline = {
+          keymap.preset = "inherit";
+          completion = {
+            menu = {
+              auto_show = true;
+            };
+          };
+        };
+      };
 
       notes.todo-comments.enable = true; # you can get quicklist by "tdq"
 

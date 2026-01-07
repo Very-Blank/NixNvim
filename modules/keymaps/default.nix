@@ -21,7 +21,7 @@
         (
           map
           (option: {
-            key = "C-${option.key}>";
+            key = "<C-${option.key}>";
             mode = "n";
             silent = true;
             action = "<C-w><C-${option.key}>";

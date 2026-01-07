@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   config = {
     vim = {
       dashboard.alpha = {
@@ -42,8 +41,8 @@
 
       autocmds = [
         {
-          event = [ "FileType" ];
-          pattern = [ "alpha" ];
+          event = ["FileType"];
+          pattern = ["alpha"];
           group = "Alpha";
           callback = lib.generators.mkLuaInline ''
             function()
