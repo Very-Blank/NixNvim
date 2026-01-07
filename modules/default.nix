@@ -106,7 +106,7 @@
       treesitter.enable = true;
       treesitter.indent.enable = true;
       treesitter.highlight.enable = true;
-      treesitter.textobjects.enable = true;
+      # treesitter.textobjects.enable = true;
     };
   };
 }
