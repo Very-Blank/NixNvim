@@ -32,6 +32,7 @@
         mouse = "";
         updatetime = 250;
         cursorlineopt = "line";
+        scrolloff = 18;
 
         tabstop = 4;
         shiftwidth = 4;
