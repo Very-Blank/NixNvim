@@ -1,5 +1,45 @@
 {
   "nodes": {
+    "base16": {
+      "inputs": {
+        "fromYaml": "fromYaml"
+      },
+      "locked": {
+        "lastModified": 1755819240,
+        "narHash": "sha256-qcMhnL7aGAuFuutH4rq9fvAhCpJWVHLcHVZLtPctPlo=",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "rev": "75ed5e5e3fce37df22e49125181fa37899c3ccd6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "type": "github"
+      }
+    },
+    "colors": {
+      "inputs": {
+        "base16": "base16",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tt-schemes": "tt-schemes"
+      },
+      "locked": {
+        "lastModified": 1768511714,
+        "narHash": "sha256-QDNsHM5sOEWyhclIom42bYowx0YR6dZFyIhFLPSQl4U=",
+        "owner": "Very-Blank",
+        "repo": "colors",
+        "rev": "8877aba4421bafba5f3f6fd0d7abd0c04e05e1b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Very-Blank",
+        "repo": "colors",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -34,6 +74,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "fromYaml": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731966426,
+        "narHash": "sha256-lq95WydhbUTWig/JpqiB7oViTcHFP8Lv41IGtayokA8=",
+        "owner": "SenchoPens",
+        "repo": "fromYaml",
+        "rev": "106af9e2f715e2d828df706c386a685698f3223b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "fromYaml",
         "type": "github"
       }
     },
@@ -116,6 +172,7 @@
     },
     "root": {
       "inputs": {
+        "colors": "colors",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf"
       }
@@ -132,6 +189,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tt-schemes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767895454,
+        "narHash": "sha256-kKUjOPC5UKZfWAtI7Drj+wB+zGs17J61kg7FH3j7Et8=",
+        "owner": "tinted-theming",
+        "repo": "schemes",
+        "rev": "0c25cbcb7bc5e656577f60adf25be5011feabbe5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinted-theming",
+        "repo": "schemes",
         "type": "github"
       }
     }

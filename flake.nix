@@ -4,6 +4,11 @@
 
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+
+    colors = {
+      url = "github:Very-Blank/colors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
@@ -20,34 +25,17 @@
 
     packages = forAllSystems (system: {
       default = nixpkgs.lib.makeOverridable (
-        {
-          languages ? ["nix"],
-          theme ? "catppuccin", # Name of the theme or base16 colors.
-          style ? "macchiato",
-          ...
-        }:
+        {languages ? ["nix"], ...}:
           (inputs.nvf.lib.neovimConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
 
             modules = [
               ({...}: {
-                imports = [./modules];
-                config = let
-                  isBase16 = (builtins.typeOf theme) != "string";
-                in {
-                  vim.theme =
-                    if isBase16
-                    then {
-                      enable = true;
-                      name = "base16";
-                      base16-colors = theme;
-                    }
-                    else {
-                      enable = true;
-                      name = theme;
-                      style = style;
-                    };
+                imports = [
+                  ./modules
+                ];
 
+                config = {
                   nixnvim.languages = languages;
                 };
               })
