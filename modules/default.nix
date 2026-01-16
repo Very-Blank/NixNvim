@@ -124,15 +124,17 @@
       treesitter.indent.enable = true;
       treesitter.highlight.enable = true;
 
-      nix = {
-        enable = true;
-        lsp = {
+      languages = {
+        nix = {
           enable = true;
-          servers = ["nixd"];
-        };
+          lsp = {
+            enable = true;
+            servers = ["nixd"];
+          };
 
-        treesitter.enable = true;
-        format.enable = true;
+          treesitter.enable = true;
+          format.enable = true;
+        };
       };
 
       # treesitter.textobjects.enable = true;
