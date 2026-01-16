@@ -7,7 +7,6 @@
 
     colors = {
       url = "github:Very-Blank/colors";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -20,11 +19,12 @@
     ];
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    lib = nixpkgs.lib;
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     packages = forAllSystems (system: {
-      default = nixpkgs.lib.makeOverridable (
+      default = lib.makeOverridable (
         {languages ? ["nix"], ...}:
           (inputs.nvf.lib.neovimConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
@@ -32,6 +32,7 @@
             modules = [
               ({...}: {
                 imports = [
+                  inputs.colors.nixosModules.default
                   ./modules
                 ];
 
@@ -41,7 +42,7 @@
               })
             ];
 
-            extraSpecialArgs = {};
+            # extraSpecialArgs = {};
           }).neovim
       ) {};
     });
