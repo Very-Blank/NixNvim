@@ -25,7 +25,7 @@
 
     packages = forAllSystems (system: {
       default = lib.makeOverridable (
-        {languages ? ["nix"], ...}:
+        {extraConfig ? {}, ...}:
           (inputs.nvf.lib.neovimConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
 
@@ -33,16 +33,11 @@
               ({...}: {
                 imports = [
                   inputs.colors.nixosModules.default
+                  extraConfig
                   ./modules
                 ];
-
-                config = {
-                  nixnvim.languages = languages;
-                };
               })
             ];
-
-            # extraSpecialArgs = {};
           }).neovim
       ) {};
     });
