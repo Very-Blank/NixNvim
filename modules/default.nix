@@ -135,6 +135,15 @@
           treesitter.enable = true;
           format.enable = true;
         };
+        markdown = {
+          enable = true;
+          lsp.enable = true;
+
+          format.enable = true;
+          treesitter.enable = true;
+
+          extensions.render-markdown-nvim.enable = true;
+        };
       };
 
       # treesitter.textobjects.enable = true;
