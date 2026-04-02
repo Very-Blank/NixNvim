@@ -7,6 +7,7 @@
   imports = [
     ./keymaps
     ./dashboard
+    ./languages
   ];
 
   config = {
