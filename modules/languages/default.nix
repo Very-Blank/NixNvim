@@ -55,7 +55,7 @@
               function()
                 ${setOption "tabstop"}
                 ${setOption "shiftwidth"}
-                ${setOption "expandtab"}
+                vim.opt_local.expandtab = ${lib.boolToString option.expandtab}
               end
             '';
           desc = "Setting language spesific indenting.";
