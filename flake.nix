@@ -10,7 +10,11 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     systems = [
       "x86_64-linux"
       "aarch64-linux"
@@ -19,27 +23,29 @@
     ];
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
-    lib = nixpkgs.lib;
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    packages = forAllSystems (system: {
-      default = lib.makeOverridable (
-        {extraConfig ? {}, ...}:
-          (inputs.nvf.lib.neovimConfiguration {
-            pkgs = nixpkgs.legacyPackages.${system};
+    mkPackage = {
+      system,
+      extraModule ? {},
+    }:
+      (inputs.nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
 
-            modules = [
-              ({...}: {
-                imports = [
-                  inputs.colors.nixosModules.default
-                  extraConfig
-                  ./modules
-                ];
-              })
+        modules = [
+          ({...}: {
+            imports = [
+              inputs.colors.nixosModules.default
+              extraModule
+              ./modules
             ];
-          }).neovim
-      ) {};
+          })
+        ];
+      }).neovim;
+
+    packages = forAllSystems (system: {
+      default = self.mkPackage {system = system;};
     });
   };
 }
