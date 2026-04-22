@@ -103,10 +103,6 @@
 
       utility.motion.leap = {
         enable = true;
-        mappings = {
-          leapForwardTo = "s";
-          leapBackwardTo = "S";
-        };
       };
 
       extraPlugins = {
