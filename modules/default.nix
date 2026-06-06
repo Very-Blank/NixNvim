@@ -59,7 +59,7 @@
           group = "highlight-yank";
           callback = lib.generators.mkLuaInline ''
             function()
-              vim.hl.on_yank()
+              vim.hl.on_yank({ higroup = "IncSearch", timeout = 150, on_macro = true })
             end
           '';
           desc = "Highlight when yanking (copying) text";
