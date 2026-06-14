@@ -67,11 +67,8 @@
 
       utility.motion.leap = {
         mappings = {
-          leapBackwardTo = "<leader>I";
-          leapBackwardTill = "<leader>A";
-
-          leapForwardTo = "<leader>i";
-          leapForwardTill = "<leader>a";
+          leapBackwardTo = "<leader>S";
+          leapForwardTo = "<leader>s";
         };
       };
     };
