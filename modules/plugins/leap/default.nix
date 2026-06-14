@@ -13,11 +13,11 @@ in {
         enable = lib.mkEnableOption "leap.nvim plugin (easy motion)";
 
         mappings = {
-          leapForwardTo = mkMappingOption "Leap forward" "s";
-          leapBackwardTo = mkMappingOption "Leap backward" "S";
+          leapForwardTo = mkMappingOption "Leap forward" "<leader>s";
+          leapBackwardTo = mkMappingOption "Leap backward" "<leader>S";
           # leapForwardTill = mkMappingOption "Leap forward till" "sx";
           # leapBackwardTill = mkMappingOption "Leap backward till" "sX";
-          leapFromWindow = mkMappingOption "Leap from window" "gs";
+          leapFromWindow = mkMappingOption "Leap from window" "<leader>gs";
         };
       };
     };
