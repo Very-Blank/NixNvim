@@ -8,6 +8,7 @@
     ./keymaps
     ./dashboard
     ./languages
+    ./plugins
   ];
 
   config = {
@@ -101,7 +102,7 @@
         };
       };
 
-      utility.motion.leap = {
+      leap = {
         enable = true;
       };
 

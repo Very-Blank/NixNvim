@@ -64,13 +64,6 @@
           next = "<C-n>";
         };
       };
-
-      utility.motion.leap = {
-        mappings = {
-          leapBackwardTo = "<leader>S";
-          leapForwardTo = "<leader>s";
-        };
-      };
     };
   };
 }
