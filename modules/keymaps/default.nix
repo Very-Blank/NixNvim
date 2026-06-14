@@ -64,6 +64,16 @@
           next = "<C-n>";
         };
       };
+
+      leap = {
+        mappings = {
+          leapBackwardTo = "<leader>A";
+          leapBackwardTill = "<leader>I";
+
+          leapForwardTo = "<leader>a";
+          leapForwardTill = "<leader>i";
+        };
+      };
     };
   };
 }

@@ -1,10 +1,11 @@
 {
   lib,
-  pkgs,
+  # pkgs,
   config,
   ...
 }: {
   imports = [
+    ./leap.nix
     ./keymaps
     ./dashboard
     ./languages
@@ -101,15 +102,8 @@
         };
       };
 
-      utility.motion.leap = {
+      leap = {
         enable = true;
-      };
-
-      extraPlugins = {
-        guess-indent = {
-          package = pkgs.vimPlugins.guess-indent-nvim;
-          setup = "require('guess-indent').setup {}";
-        };
       };
 
       visuals.indent-blankline.enable = true;
@@ -142,8 +136,6 @@
           extensions.render-markdown-nvim.enable = true;
         };
       };
-
-      # treesitter.textobjects.enable = true;
     };
   };
 }
