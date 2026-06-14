@@ -65,13 +65,13 @@
         };
       };
 
-      leap = {
+      utility.motion.leap = {
         mappings = {
-          leapBackwardTo = "<leader>A";
-          leapBackwardTill = "<leader>I";
+          leapBackwardTo = "<leader>I";
+          leapBackwardTill = "<leader>A";
 
-          leapForwardTo = "<leader>a";
-          leapForwardTill = "<leader>i";
+          leapForwardTo = "<leader>i";
+          leapForwardTill = "<leader>a";
         };
       };
     };

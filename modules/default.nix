@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./leap.nix
     ./keymaps
     ./dashboard
     ./languages
@@ -102,7 +101,7 @@
         };
       };
 
-      leap = {
+      utility.motion.leap = {
         enable = true;
       };
 
