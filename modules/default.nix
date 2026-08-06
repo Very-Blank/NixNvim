@@ -1,6 +1,6 @@
 {
   lib,
-  # pkgs,
+  pkgs,
   config,
   ...
 }: {
@@ -30,7 +30,12 @@
 
       clipboard = {
         enable = true;
-        providers.wl-copy.enable = true;
+
+        providers.wl-copy = {
+          enable = true;
+          package = pkgs.wl-clipboard-rs;
+        };
+
         registers = "unnamedplus";
       };
 
@@ -129,7 +134,10 @@
 
         markdown = {
           enable = true;
-          lsp.enable = true;
+          lsp = {
+            enable = true;
+            servers = ["markdown-oxide"];
+          };
 
           format = {
             enable = true;
