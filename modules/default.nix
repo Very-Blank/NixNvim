@@ -126,11 +126,16 @@
           treesitter.enable = true;
           format.enable = true;
         };
+
         markdown = {
           enable = true;
           lsp.enable = true;
 
-          format.enable = true;
+          format = {
+            enable = true;
+            type = "rumdl";
+          };
+
           treesitter.enable = true;
 
           extensions.render-markdown-nvim.enable = true;
