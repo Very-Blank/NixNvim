@@ -133,7 +133,7 @@
 
           format = {
             enable = true;
-            type = "rumdl";
+            type = ["rumdl"];
           };
 
           treesitter.enable = true;
