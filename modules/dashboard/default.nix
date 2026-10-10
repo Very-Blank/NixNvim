@@ -55,9 +55,9 @@
 
                 on_press = lib.mkLuaInline ''
                   function()
-                    vim.ui.input({ prompt = "New file: ", completion = "file" }, function(input)
+                    vim.ui.input({ prompt = "New File: ", completion = "file" }, function(input)
                       if input == nil or input == "" then
-                        return  -- user cancelled or entered nothing
+                        return
                       end
 
                       vim.fn.writefile({}, input)
@@ -83,7 +83,7 @@
               }
               {
                 type = "button";
-                val = "󰅚 | Quit Nvim";
+                val = " | Quit Nvim";
 
                 on_press = lib.generators.mkLuaInline ''
                   function()
@@ -125,8 +125,6 @@
           callback = lib.generators.mkLuaInline ''
             function()
               vim.opt_local.fillchars = { eob = " " }
-              vim.opt_local.cursorline = true
-              vim.opt_local.cursorlineopt = "line"
             end
           '';
           desc = "Setting end of buffer character to space.";
