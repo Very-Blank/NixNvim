@@ -1,6 +1,6 @@
 {
   lib,
-  # pkgs,
+  pkgs,
   config,
   ...
 }: {
@@ -30,7 +30,12 @@
 
       clipboard = {
         enable = true;
-        providers.wl-copy.enable = true;
+
+        providers.wl-copy = {
+          enable = true;
+          package = pkgs.wl-clipboard-rs;
+        };
+
         registers = "unnamedplus";
       };
 
@@ -126,11 +131,19 @@
           treesitter.enable = true;
           format.enable = true;
         };
+
         markdown = {
           enable = true;
-          lsp.enable = true;
+          lsp = {
+            enable = true;
+            servers = ["markdown-oxide"];
+          };
 
-          format.enable = true;
+          format = {
+            enable = true;
+            type = ["rumdl"];
+          };
+
           treesitter.enable = true;
 
           extensions.render-markdown-nvim.enable = true;
