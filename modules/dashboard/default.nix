@@ -70,6 +70,7 @@
 
                 opts = {
                   shortcut = "[space c]";
+                  cursor = 2;
                   keymap = [
                     "n"
                     "<space>c"
@@ -93,6 +94,7 @@
 
                 opts = {
                   shortcut = "[space q]";
+                  cursor = 2;
 
                   keymap = [
                     "n"
@@ -127,87 +129,8 @@
               vim.opt_local.fillchars = { eob = " " }
             end
           '';
+
           desc = "Setting end of buffer character to space.";
-        }
-        {
-          event = ["FileType"];
-          pattern = ["alpha"];
-          group = "Alpha";
-          callback = lib.generators.mkLuaInline ''
-            function()
-              local buf = vim.api.nvim_get_current_buf()
-              local ns = vim.api.nvim_create_namespace("alpha_button_hl")
-
-              local function highlight()
-                if not vim.api.nvim_buf_is_valid(buf) then
-                  return
-                end
-                vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
-
-                local win = vim.fn.bufwinid(buf)
-                if win == -1 then
-                  return
-                end
-
-                local row, col = unpack(vim.api.nvim_win_get_cursor(win))
-                local line = vim.api.nvim_buf_get_lines(buf, row - 1, row, false)[1] or ""
-                if col >= #line then
-                  return
-                end
-
-                vim.api.nvim_buf_set_extmark(buf, ns, row - 1, col, {
-                  end_col = #line,
-                  hl_group = "Visual",
-                })
-              end
-
-              vim.api.nvim_create_autocmd("CursorMoved", {
-                group = "Alpha",
-                buffer = buf,
-                callback = function()
-                  vim.schedule(highlight)
-                end,
-              })
-
-              vim.schedule(highlight)
-            end
-          '';
-          desc = "Setting end of buffer character to space and highlighting the hovered button.";
-        }
-        {
-          event = ["FileType"];
-          pattern = ["alpha"];
-          group = "Alpha";
-          callback = lib.generators.mkLuaInline ''
-            function()
-              local buf = vim.api.nvim_get_current_buf()
-              local original = vim.o.guicursor
-
-              local function hide()
-                vim.api.nvim_set_hl(0, "AlphaHiddenCursor", { blend = 100, nocombine = true })
-                vim.o.guicursor = original .. ",n-v:AlphaHiddenCursor"
-              end
-
-              local function show()
-                vim.o.guicursor = original
-              end
-
-              hide()
-
-              vim.api.nvim_create_autocmd("BufEnter", {
-                group = "Alpha",
-                buffer = buf,
-                callback = hide,
-              })
-
-              vim.api.nvim_create_autocmd({ "BufLeave", "BufUnload" }, {
-                group = "Alpha",
-                buffer = buf,
-                callback = show,
-              })
-            end
-          '';
-          desc = "Hiding the cursor while on the dashboard.";
         }
       ];
     };
